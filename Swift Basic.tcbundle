@@ -1,0 +1,311 @@
+{
+  "id" : "17211907-E9C8-41BC-B5DF-9814175C43BA",
+  "name" : "Swift Basic",
+  "description" : "Basic Swift language expanders\n\nMade by [twitter] @Apptorium",
+  "expanders" : [
+    {
+      "name" : "Variable",
+      "description" : "> -v name: String",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|v ${name:word}: ${type:identifier}| = ${value:text}|",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "0C4E5D3B-ADFD-4BF7-A329-40EF5C4DFBC2",
+      "output_template" : "|${scope}|var ${name.lcfirst}: ${type.ucfirst}| = ${value}|"
+    },
+    {
+      "name" : "Let",
+      "description" : "> -l name = \"Joe Doe\"\n> -l name: String = \"Joe Doe\"",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|l ${name:word}|: ${type:word}| = ${value:text}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "962B6CE5-3AEC-4A2A-BAA4-7B06EB102EDB",
+      "output_template" : "|${scope}|let ${name}|: ${type}|| = ${value}|"
+    },
+    {
+      "name" : "Function",
+      "description" : "> -f run\n> -f run(hello: String, world: String) -> Bool",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|f ${name:word}|(${params:text})|| -> ${return:text}|",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "41E3873F-49E2-4A8D-BEE3-EC30716050CA",
+      "output_template" : "|${scope}|func ${name}(|${params}|)| -> ${return}| {\n\t#\n}"
+    },
+    {
+      "name" : "Class",
+      "description" : "> +c MainViewController\n> +c MainViewController: NSViewController",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|c ${name:word}|: ${superclass:text}|",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "86C3220D-52DE-49AB-82AB-997B288FFEB0",
+      "output_template" : "|${scope}|class ${name.ucfirst}|: ${superclass}| {\n\t#\n}"
+    },
+    {
+      "name" : "guard",
+      "description" : "> g value == true",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "g ${condition:text}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "F29F1384-A94A-4462-A928-DD2553E80176",
+      "output_template" : "guard ${condition} else {\n\treturn\n}\n#"
+    },
+    {
+      "name" : "guard let",
+      "description" : "Simplifies typing the `guard let – else` expression for one variable. \n> gl variable",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "gl ${var:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "22DA9023-8D91-4436-9D75-FDA80023F6C5",
+      "output_template" : "guard let ${var} = ${var} else {\n\treturn\n}\n#"
+    },
+    {
+      "name" : "if let",
+      "description" : "> il name",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "il ${var:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "30A460DB-4E96-45E4-A37C-8709EE5EE314",
+      "output_template" : "if let ${var} = ${var} {\n\t#\n}"
+    },
+    {
+      "name" : "do-try-catch",
+      "description" : "> try run()",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "try ${operation:text}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "3A8A0E2D-8C98-414C-A452-B918394A1572",
+      "output_template" : "do {\n\ttry ${operation}\n} catch {\n\t#\n}"
+    },
+    {
+      "name" : "Variable with get and set",
+      "description" : "> +gs name: String",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|gs ${name:word}: ${type:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "D3210F8D-D191-43B1-8E70-D735AD536997",
+      "output_template" : "|${scope}|var ${name}: ${type} {\n\tget {\n\t\t#\n\t}\n\tset {\n\t\t\n\t}\n}"
+    },
+    {
+      "name" : "Getter",
+      "description" : "Generates a variable with getter.\n\n> +getName: String",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|get${name:word}: ${type:identifier}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "8B02E247-E4C7-4B0C-B942-E4DDC268348F",
+      "output_template" : "|${scope}|var ${name.lcfirst}: ${type.ucfirst} {\n\treturn #\n}"
+    },
+    {
+      "name" : "Boolean Getter: is \/ did \/ has \/ should",
+      "description" : "> isValid\n> didLoad",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|${prefix:enum(is,did,has,should)}${name:identifier}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "4864438B-878B-4EA4-8940-15E20A34156A",
+      "output_template" : "|${scope}|var ${prefix}${name}: Bool {\n    return #\n}"
+    },
+    {
+      "name" : "Protocol Var Getter \/ Setter",
+      "description" : "> pg name: String\n> pgs name: String",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "pg${setter:switch(s: set,*:)} ${name:word}: ${type:identifier}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "9DA54474-8B7D-471E-92B1-99E322C56E76",
+      "output_template" : "var ${name}: ${type} { get${setter} }"
+    },
+    {
+      "name" : "Operator",
+      "description" : "> +o ==: String",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|o ${operator:text}: ${type:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "1E7CB2D3-853C-45B8-9927-3ED72AC2D35C",
+      "output_template" : "|${scope}|static func ${operator}(lhs: ${type}, rhs: ${type}) -> Bool {\n\treturn #\n}"
+    },
+    {
+      "name" : "Lazy var with block",
+      "description" : "Creates a lazy variable.\n> lv variableName: String",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|lv ${name:word}: ${type:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "94428D25-AEFB-403E-A3C2-B00EFB8DEC78",
+      "output_template" : "|${scope}|lazy var ${name}: ${type.ucfirst} = {\n    #\n}()"
+    },
+    {
+      "name" : "Lazy var with constructor",
+      "description" : "Creates a lazy variable with a simple (non parameter) constructor.\n> lvc hello: MyClass",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|lvc ${name:word}: ${type:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "D6511613-5FA7-4C7B-AAF8-FBCE758C622B",
+      "output_template" : "|${scope}|lazy var ${name}: ${type.ucfirst} = {\n    let ${name} = ${type.ucfirst}()\n    ${name}.#\n    return ${name}\n}()"
+    },
+    {
+      "name" : "Special Comment",
+      "description" : "Creates special comments: `MARK`, `TODO`, `FIXME`, `!`, `?`\n\n> td Implement\n> m View Lifecycle",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "${type:switch(m:MARK\\: -,td:TODO\\:,fm:FIXME\\:,!:!!!\\:,?:???\\:)} ${comment:text}",
+      "supported_languages" : [
+
+      ],
+      "id" : "007BD334-D81A-4A3E-B1B3-5E97E009B238",
+      "output_template" : "\/\/ ${type} ${comment}"
+    },
+    {
+      "name" : "Import",
+      "description" : "Imports a module with the given name.\n> @UIKit",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "@${name:text}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "9D4D0E4F-DF13-4ECF-966B-13D76EA349C9",
+      "output_template" : "import ${name}"
+    },
+    {
+      "name" : "Scope",
+      "description" : "Swift scope. Used by other expanders.",
+      "identifier" : "scope",
+      "is_enabled" : true,
+      "pattern" : "${scope:switch(+:public,-:private,f:fileprivate,o:open)}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "81D176BA-8BD2-483D-A06C-FB017A0E51A5",
+      "output_template" : "${scope} "
+    },
+    {
+      "name" : "Protocol",
+      "description" : "> +p MyProtocol",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|p ${name:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "CBC86DED-1DC4-4CB8-8D61-F9EAFA23FE47",
+      "output_template" : "|${scope}|protocol ${name.ucfirst} {\n\t#\n}"
+    },
+    {
+      "name" : "Struct",
+      "description" : "",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|s ${name:word}|: ${inheritence:text}|",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "7B089E2A-84C2-470A-855F-76009CC7C2EA",
+      "output_template" : "|${scope}|struct ${name.ucfirst}|: ${inheritence}| {\n\t#\n}"
+    },
+    {
+      "name" : "if",
+      "description" : "Generates simple `if` statement.\n\n> if condition",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "if ${condition:text}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "CDE2B2D6-6F48-403A-95A8-AFBFB03A7402",
+      "output_template" : "if ${condition} {\n\t#\n}"
+    },
+    {
+      "name" : "Extension",
+      "description" : "",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|ex ${name:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "6DE56B6C-3D68-472A-AD5D-6B0F3AA691A0",
+      "output_template" : "|${scope}|extension ${name.ucfirst} {\n\t#\n}"
+    },
+    {
+      "name" : "Enum",
+      "description" : "",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|en ${name:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "77B95783-2760-4BE4-9AB8-6C115F92707A",
+      "output_template" : "|${scope}|enum ${name.ucfirst} {\n\tcase #\n}"
+    },
+    {
+      "name" : "defer",
+      "description" : "",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "def",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "8BF5D5F1-9010-4924-93F1-762A7DEA516B",
+      "output_template" : "defer {\n\t#\n}"
+    },
+    {
+      "name" : "Switch",
+      "description" : "",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "sw ${expression:text}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "4C9A43C3-4BEC-4B82-AFB3-97D24BB56F4A",
+      "output_template" : "switch ${expression} {\ncase #\n}"
+    }
+  ],
+  "is_enabled" : true,
+  "supported_languages" : [
+    "swift"
+  ]
+}

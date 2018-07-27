@@ -1,0 +1,108 @@
+{
+  "id" : "B6EB0DB0-E2E7-4C90-8986-2450CAC4ECB6",
+  "name" : "Objective C",
+  "description" : "Basic Objective-C language expanders\n\nMade by [twitter] @Apptorium",
+  "expanders" : [
+    {
+      "name" : "Short, void method",
+      "description" : "> -run",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "${type:enum(+,-)}${name:text}",
+      "supported_languages" : [
+        "objc"
+      ],
+      "id" : "D066124F-20DD-421D-ADCD-6FF80287F4F8",
+      "output_template" : "${type} (void)${name} {\n\t#\n}"
+    },
+    {
+      "name" : "Dispatch",
+      "description" : "Creates Dispatch-block using combinations of `g` (global thread) and `m` (main thread) as well as `a` (async) and `s` (sync).\n\n> dga\n> dms",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "d${thread:switch(g:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT\\, 0),m:dispatch_get_main_queue())}${type:switch(a:async,s:sync)}",
+      "supported_languages" : [
+        "objc"
+      ],
+      "id" : "E7AC70E9-54DF-4E0E-AA0A-D971B8B613CC",
+      "output_template" : "dispatch_${type}(${thread}, ^(void){\n    #\n});"
+    },
+    {
+      "name" : "Import",
+      "description" : "Imports a file\n\n> @ViewController",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "@${name:text}",
+      "supported_languages" : [
+        "objc"
+      ],
+      "id" : "58C28E78-0A44-4950-9E36-9032FC4FB7B4",
+      "output_template" : "\\#import \"${name}.h\""
+    },
+    {
+      "name" : "if",
+      "description" : "Generates simple `if` statement.\n\n> if condition",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "if ${condition:text}",
+      "supported_languages" : [
+        "objc"
+      ],
+      "id" : "2073EF0D-CB00-40AF-8384-A605840175D5",
+      "output_template" : "if (${condition}) {\n\t#\n}"
+    },
+    {
+      "name" : "Protocol",
+      "description" : "> p MyProtocol",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "p ${name:word}",
+      "supported_languages" : [
+        "objc"
+      ],
+      "id" : "73BE71C7-04AE-4136-89AE-44184A013621",
+      "output_template" : "@protocol ${name.ucfirst}\n#\n@end"
+    },
+    {
+      "name" : "Action",
+      "description" : "Creates an action.\n\n> act done",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "act ${name:identifier}",
+      "supported_languages" : [
+        "objc"
+      ],
+      "id" : "0FE64AE7-005C-4919-9A53-6582BECCFC44",
+      "output_template" : "- (IBAction)${name}:(id)sender {\n\t#\n}"
+    },
+    {
+      "name" : "Outlet",
+      "description" : "Creates an outlet.\n\n> out button: NSButton",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "out ${name:identifier}: ${type:identifier}",
+      "supported_languages" : [
+        "objc"
+      ],
+      "id" : "7001D433-791B-4AC4-A82F-D243DA139D57",
+      "output_template" : "@property (weak) IBOutlet ${type} *${name};"
+    },
+    {
+      "name" : "Localized String",
+      "description" : "Simpifies string localization.\n\n> _Hello World_First message",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "_${string:text?}|_${comment:text}|",
+      "supported_languages" : [
+        "objc"
+      ],
+      "id" : "2E75A30F-CC38-41A2-A874-A9D602569EA7",
+      "output_template" : "NSLocalizedString(@\"${string}\", comment: @\"|${comment}|\")"
+    }
+  ],
+  "is_enabled" : true,
+  "supported_languages" : [
+    "any",
+    "objc"
+  ]
+}

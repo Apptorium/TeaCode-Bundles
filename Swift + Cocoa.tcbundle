@@ -1,0 +1,83 @@
+{
+  "id" : "3EAC8A90-CAFF-491C-B751-5FE29416102F",
+  "name" : "Swift + Cocoa",
+  "description" : "`Swift` expanders for `Cocoa` framework.\n\nMade by [twitter] @Apptorium",
+  "expanders" : [
+    {
+      "name" : "viewDidLoad",
+      "description" : "Creates `viewDidLoad` method.\n\n> vdl",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "vdl",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "791FC40C-F4AE-4822-BB29-914770DBE932",
+      "output_template" : "override func viewDidLoad() {\n\tsuper.viewDidLoad()\n\t\n\t#\n}"
+    },
+    {
+      "name" : "viewDidAppear",
+      "description" : "Creates `viewDidAppear` method.\n\n> vda",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "vda",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "8336DB93-ED74-4816-A8ED-4E90EFC96114",
+      "output_template" : "override func viewDidAppear() {\n\tsuper.viewDidAppear()\n\t\n\t#\n}"
+    },
+    {
+      "name" : "viewWillAppear",
+      "description" : "Creates `viewWillAppear` method.\n\n> vwa",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "vwa",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "54DFB1AE-CEF4-49A5-83D7-B5BAD8671380",
+      "output_template" : "override func viewWillAppear() {\n\tsuper.viewWillAppear()\n\t\n\t#\n}"
+    },
+    {
+      "name" : "View Controller",
+      "description" : "Creates a class that inherits from `NSViewController`\n\n> vc main",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "vc ${name:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "1DA66441-80AC-485B-B998-CCA93B4FB22E",
+      "output_template" : "class ${name.ucfirst}ViewController: NSViewController {\n\n\toverride func viewDidLoad() {\n        super.viewDidLoad()\n        \n        #\n    }\n}"
+    },
+    {
+      "name" : "Window Controller",
+      "description" : "Creates a class that inherits from `NSWindowController`\n\n> wc main",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "wc ${name:word}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "9C9A4B14-5837-448E-8E67-F54B6AC3394A",
+      "output_template" : "class ${name.ucfirst}WindowController: NSWindowController {\n\n\toverride func windowDidLoad() {\n        super.windowDidLoad()\n        \n        #\n    }\n}"
+    },
+    {
+      "name" : "Binding",
+      "description" : "Creates a binding.\n\n> bind sourceObject:variable to destinationObject:path",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "bind |${var:text}:|${var_path:text} to ${object:text}:${object_path:text}",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "C39B1D4E-BF59-4641-86C1-490F3330875B",
+      "output_template" : "|${var}.|bind(NSBindingName(\"${var_path}\"), to: ${object}, withKeyPath: \"${object_path}\", options: nil)"
+    }
+  ],
+  "is_enabled" : true,
+  "supported_languages" : [
+    "swift"
+  ]
+}

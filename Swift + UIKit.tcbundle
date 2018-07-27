@@ -1,0 +1,59 @@
+{
+  "id" : "1D3CAAAD-DC44-4282-8E07-3BF8852D8277",
+  "name" : "Swift + UIKit",
+  "description" : "`Swift` expanders for `UIKIt` framework.\n\nMade by [twitter] @Apptorium.",
+  "expanders" : [
+    {
+      "name" : "UIView subclass",
+      "description" : "Generates a subclass of a UIView class.\n\n> sub MyView: UIView",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "|${scope:exp(scope)}|sub ${name:word}: UIView",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "DDB6295C-A6EF-4257-BE90-58A4DD05B02F",
+      "output_template" : "@IBDesignable |${scope}|class ${name}: UIView {\n\t\n\toverride init(frame: CGRect) {\n        super.init(frame: frame)\n        self.configure()\n    }\n    \n    required init?(coder aDecoder: NSCoder) {\n        super.init(coder: aDecoder)\n        self.configure()\n    }\n    \n    private func configure() {\n    \t#\n    }\n    \n    override func layoutSubviews() {\n        super.layoutSubviews()\n    }\n}"
+    },
+    {
+      "name" : "viewDidLoad",
+      "description" : "Creates `viewDidLoad` method.\n\n> vdl",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "vdl",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "1107CC4B-F51A-4E95-94E5-ACF87E1A5E81",
+      "output_template" : "override func viewDidLoad(_ animated: Bool) {\n\tsuper.viewDidLoad(animated)\n\t\n\t#\n}"
+    },
+    {
+      "name" : "viewDidAppear",
+      "description" : "Creates `viewDidAppear` method.\n\n> vda",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "vda",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "F2FF0C33-420A-4F5D-8D10-640262F03981",
+      "output_template" : "override func viewDidAppear(_ animated: Bool) {\n\tsuper.viewDidAppear(animated)\n\t\n\t#\n}"
+    },
+    {
+      "name" : "viewWillAppear",
+      "description" : "Creates `viewWillAppear` method.\n\n> vwa",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "vwa",
+      "supported_languages" : [
+        "swift"
+      ],
+      "id" : "BA3E70B2-9C96-464A-8F21-BF35FBCBC0FB",
+      "output_template" : "override func viewWillAppear(_ animated: Bool) {\n\tsuper.viewWillAppear(animated)\n\t\n\t#\n}"
+    }
+  ],
+  "is_enabled" : true,
+  "supported_languages" : [
+    "swift"
+  ]
+}

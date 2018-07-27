@@ -1,0 +1,71 @@
+{
+  "id" : "B261A7BB-85FE-40FB-9426-C7F57101445C",
+  "name" : "HTML",
+  "description" : "Improves the HTML coding.\n\nMade by [twitter] @Apptorium",
+  "expanders" : [
+    {
+      "name" : "Tag",
+      "description" : "Expands a tag.\n> div.hello#world\n> p hello world",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "${tag:exp(htmltag)}|.${class:identifier}||#${id:identifier}|| ${text:text}|",
+      "supported_languages" : [
+        "html"
+      ],
+      "id" : "B005C9C5-60DD-40A4-AEC3-650FFC568CD0",
+      "output_template" : "<${tag}| class=\"${class}\"|| id=\"${id}\"|>|${text}|#<\/${tag}>"
+    },
+    {
+      "name" : "a href",
+      "description" : "Creates a link.\n\n> a http:\/\/www.apptorium.com",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "a ${link:text}",
+      "supported_languages" : [
+        "html"
+      ],
+      "id" : "6AEF387C-2342-455F-9C6E-C74EBD998C29",
+      "output_template" : "<a href=\"${link}\">#<\/a>"
+    },
+    {
+      "name" : "Template",
+      "description" : "Basic HTML 5 template\n\n> html",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "html",
+      "supported_languages" : [
+        "html"
+      ],
+      "id" : "7F28D2E2-AE23-464A-AC84-3E34E8F6C390",
+      "output_template" : "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<title><\/title>\n\t<\/head>\n\t<body>\n\t\t#\n\t<\/body>\n<\/html>"
+    },
+    {
+      "name" : "Empty Tag",
+      "description" : "> br",
+      "identifier" : "",
+      "is_enabled" : true,
+      "pattern" : "${tag:enum(br,hr,wbr)}",
+      "supported_languages" : [
+        "html"
+      ],
+      "id" : "30B2F209-580E-4B50-9629-C8939C0AB6C3",
+      "output_template" : "<${tag} \/>"
+    },
+    {
+      "name" : "Tag Name",
+      "description" : "List of tags. Created to be used within `Tag` expander.",
+      "identifier" : "htmltag",
+      "is_enabled" : true,
+      "pattern" : "${tag:enum(a,abbr,acronym,address,applet,article,aside,audio,b,basefont,bdi,bdo,big,blockquote,body,button,canvas,caption,center,cite,code,colgroup,datalist,dd,del,details,dfn,dialog,dir,div,dl,dt,em,fieldset,figcaption,figure,font,footer,form,frame,frameset,h1,head,header,i,iframe,ins,kbd,label,legend,li,main,map,mark,menu,menuitem,meter,nav,noframes,noscript,object,ol,optgroup,option,output,p,picture,pre,progress,q,rp,rt,ruby,s,samp,script,section,select,small,span,strike,strong,style,sub,summary,sup,table,tbody,td,textarea,tfoot,th,thead,time,title,tr,tt,u,ul,var,video)}",
+      "supported_languages" : [
+        "html"
+      ],
+      "id" : "2EE9A9FE-1B37-486F-95EB-33E6E8B6D5BA",
+      "output_template" : "${tag}"
+    }
+  ],
+  "is_enabled" : true,
+  "supported_languages" : [
+    "html"
+  ]
+}

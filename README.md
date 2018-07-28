@@ -1,6 +1,7 @@
 # TeaCode-Bundles
 
 Official set of [TeaCode](https://www.apptorium.com/teacode) bundles.
-Please read guidelines before you start: https://www.apptorium.com/support/teacode/guidelines 
+
+Please read [guidelines](https://www.apptorium.com/support/teacode/guidelines) before you start.
 
 Bundles are distributed under terms of MIT license.
